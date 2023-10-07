@@ -7,7 +7,7 @@
 
 [![Visual-Code Version](https://img.shields.io/badge/Visual-Code-blue)](https://code.visualstudio.com/)
 
-[![Visual-Code Version](https://img.shields.io/badge/Visual-Code-blue)](https://www.python.org/downloads/release/python-3112/)
+[![Visual-Code Version](https://img.shields.io/badge/Python-Lasted-white)](https://www.python.org/downloads/)
 
 
 
