@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %} Home {% endblock %}
+
+
+{% block content %}
+<h3>Inicio</h3>
+<hr />
+{% if request.session.customer %}
+<h4>Bienvenido a <strong>One click</strong></h4>
+{% endif %}
+
+<section class="bg-light" id="portfolio">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="intro">
+          <h6>Explora nuevas formas de emprender</h6>
+          <h1>¡Involucrate!</h1>
+          <p class="mx-auto">Bienvenido(a)s a ONECLICK, un sitio web dedicado a emprendedores y consumidores donde se conectan, descubren, compran y crecen juntos en un ambiente innovador y colaborativo.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="projects-slider" class="owl-theme owl-carousel">
+    {% for categoria in categorias %}
+    <div class="project">
+      <div class="overlay"></div>
+      <img class="img-carrusel" src="{{ categoria.image.url }}" alt="">
+      <div class="content">
+        <a class="btn btn-outline-secondary ms-3" href="/?category={{categoria.id}}">
+          <h2>{{ categoria.name }}</h2>
+        </a>
+        <h6>Categoria</h6>
+      </div>
+    </div>
+    {% empty %}
+    <h2>No hay Categorias</h2>
+    {% endfor %}
+  </div>
+</section>
+
+
+<div class="container-fluid my-5 fw-bold">
+  <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+    <li class="me-4">
+      <a class="btn btn-outline-dark" href="{% url 'condiciones' %}">Condiciones de uso</a>
+    </li>
+    <li>
+      <a class="btn btn-outline-dark" href="{% url 'privacidad' %}">Aviso de privacidad</a>
+    </li>
+  </ul>
+</div>
+
+{% endblock %}

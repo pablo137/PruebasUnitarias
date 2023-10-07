@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block title %} Ver productos {% endblock %}
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<script src="{% static 'js/mi_script.js' %}"></script>
+
+<h1>Mis productos:</h1>
+<hr>
+
+{% if user.rol == "cliente" %}
+<h2>Acceso denegado!!! Usted esta en el rol de cliente</h2>
+<hr>
+{% else %}
+{% if productos %}
+<!-- Mostrar los productos -->
+<a class="btn btn-primary" href="{% url 'crear_producto' %}">+ Crear Producto</a>
+<table class="table" aria-describedby="descripcion-tabla">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Categoría</th>
+      <th scope="col">Precio</th>
+      <th scope="col">Stock</th>
+      <th scope="col">Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for producto in productos %}
+    <tr>
+      <th scope="row">1</th>
+      <td>{{ producto.name }}</td>
+      <td>{{ producto.category }}</td>
+      <td>{{ producto.price }}</td>
+      <td>{{ producto.stock }}</td>
+      <td>
+        <a class="btn btn-primary" href="{% url 'editar_producto' producto.id %}">Editar</a>
+        <a class="btn btn-danger" href="{% url 'eliminar_producto' producto.id %}">Eliminar</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<div id="descripcion-tabla" class="sr-only">
+  Lista de productos registrados por el usuario actual
+</div>
+{% else %}
+<!-- Mostrar el mensaje -->
+<p>{{ mensaje }}</p>
+{% endif %}
+{% endif %}
+
+{% endblock %}

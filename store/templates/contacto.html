@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %} Editar perfil {% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h1>Contacto</h1>
+<hr>
+
+<p class="fs-5 text-center px-5">Es un placer que puedas contactarnos. Nos pondremos en contacto contigo, en el menor tiempo posible</p>
+    <div class="row">
+        <div class="col-md-6">
+            <form action="" method="POST">
+                {% csrf_token %}
+                
+                {{ form | crispy }}
+                <br>
+                <input class="btn btn-primary" type="submit" value="Enviar Mensaje" {% if 'ok' in request.GET %}disabled{% endif %}{% if 'error' in request.GET %}disabled{% endif %}>
+            </form>
+
+            {% if 'ok' in request.GET %}
+                <div class="alert alert-success mt-5" role="alert">
+                    <strong>El mensaje se ha enviado correctamente</strong>
+                </div>
+            {% endif %}
+
+            {% if 'error' in request.GET %}
+                <div class="alert alert-danger mt-5" role="alert">
+                    <strong>El mensaje no ha podido ser enviado. Por favor, intente más tarde</strong>
+                </div>
+            {% endif %}
+        </div>
+        
+        <div class="col-md-6 mb-5">
+            <img class="float-start img-fluid" src="https://images.vexels.com/media/users/3/154431/isolated/preview/1b0612bca0cd99911b17c88392db70ca-icono-de-contacto-de-soporte-al-cliente.png" alt="">
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="d-grid gap-2 col-6 mx-auto mb-5">
+        <a class="btn btn-info btn-lg" href={% url 'contactanos' %}>Sugerencias / Reclamos</a>
+    </div>
+{% endblock %}

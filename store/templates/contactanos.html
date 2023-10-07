@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %} Editar perfil {% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<h1> Contactanos </h1>
+<hr>
+<form action="" method="POST">
+    {% csrf_token %}
+    {{ form | crispy }}
+    <button class="btn btn-primary">
+        Mandar
+    </button>
+</form>
+<!-- MENSAJE ENMERGENTE -->
+<link rel="stylesheet" href="{% static 'sweetalert2/dist/sweetalert2.min.css' %}">
+<script src="{% static 'sweetalert2/dist/sweetalert2.min.js' %}"></script>
+{% if messages %}
+{% for m in messages %}
+<script>
+    Swal.fire({
+        "title": "Tu mensaje",
+        "text": "{{m}}",
+        "icon": 'success',
+        "showConfirmButton": false,
+        "timer": 3000
+    })
+</script>
+{% endfor %}
+{% endif %}
+{% endblock %}

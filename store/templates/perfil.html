@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% block title %} Perfil {% endblock %}
+
+{% block content %}
+
+<h1>Perfil:</h1>
+<hr>
+
+<section>
+    <div class="container py-0">
+
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="card mb-4">
+                    <div class="card-body text-center">
+                        <img src="{{profile.img.url}}" alt="avatar" class="card-img-top"
+                            style="width: 150px;">
+                        <h5 class="mt-3 card-title text-primary">@{{ profile.user.first_name | upper }}  
+                        </h5>
+                        <p class="text-muted mb-1">{{ profile.user.rol | upper }}</p>
+                        <div class="d-flex justify-content-center mb-2">
+                            <a href="{% url 'edit_perfil' %}" class="btn btn-sm btn-primary">Editar Perfil</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="text-center">
+                                <h2>
+                                    <p class="mb-0">TU INFORMACION</p>
+                                </h2>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0"><strong>Nombres</strong></p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{ profile.user.first_name }}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0"><strong>Apellidos</strong></p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{ profile.user.last_name }}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0"><strong>Correo</strong></p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{ profile.user.email }}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0"><strong>Telefono</strong></p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{ profile.user.phone }}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            {% if profile.user.rol == 'cliente' %}
+
+                            <div></div>
+                            {% else %}
+                            <div class="d-flex justify-content-left mb-2 ms-2">
+                                <a class="btn btn-primary d-flex justify-content-center mb-2"
+                                    href="{% url 'ver_productos' %}">Mis productos</a>
+                            </div>
+                            
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

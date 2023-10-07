@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %} Editar producto {% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<h1>Editar Producto:</h1>
+<hr>
+{% if user.rol == "cliente" %}
+<h2>Acceso denegado!!! Usted esta en el rol de cliente</h2>
+<hr>
+{% else %}
+<form id="form-edicion" method="post" action="{% url 'editar_producto' producto.id %}">
+  {% csrf_token %}
+  <!-- Campos del formulario para editar los atributos del producto -->
+  {{ form | crispy }}
+  <br>
+  <input type="submit" value="Guardar cambios">
+</form>
+{% endif %}
+
+{% endblock %}

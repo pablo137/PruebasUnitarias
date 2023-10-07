@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+
+  <!-- ICONS BOX -->
+  <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+    integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+    crossorigin="anonymous" />
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+    integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
+    crossorigin="anonymous" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
+
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+  <title>{% block title %}{% endblock %}</title>
+
+  <style>
+    nav {
+      background-color: white;
+    }
+
+    .one-edge-shadow {
+      box-shadow: 0 8px 2px -5px rgb(246, 245, 245);
+    }
+
+    .display-8 {
+      font-weight: 200;
+      font-size: 30px;
+    }
+  </style>
+</head>
+
+<body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="70">
+  <!-- TOP NAV -->
+  <div class="top-nav" id="home">
+    <div class="container">
+      <div class="row justify-content-between">
+        <div class="col-auto">
+          <a class="btn text-light" href="/contacto"><i class='bx bxs-envelope'></i><i class='bx bxs-phone-call'></i> Contactanos</a>
+        </div>
+        <div class="mt-1 col-auto social-icons">
+          <a style="text-decoration:none;" href="#"><i class='bx bxl-facebook'></i></a>
+          <a style="text-decoration:none;" href="#"><i class='bx bxl-twitter'></i></a>
+          <a style="text-decoration:none;" href="#"><i class='bx bxl-instagram'></i></a>
+          <a style="text-decoration:none;" href="#"><i class='bx bxl-pinterest'></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="container">
+    <nav class="one-edge-shadow sticky-top navbar navbar-expand-lg navbar-light bg-white">
+      <a class="navbar-brand" href="{% url 'home' %}">
+        <img src="https://res.cloudinary.com/dexh8g1vv/image/upload/v1685435213/media/Propietarios/7da5aa2a9a3640ef87cb178906b9fasfsdf2f2e_lhmpig.png" alt="ONECLICK Logo">
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item btn btn-light">
+            <a class="nav-link active" href="{% url 'home' %}">Inicio <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item btn btn-light">
+            <a class="nav-link active" href="/store">Productos <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item btn btn-light">
+            <a class="nav-link active" href="/acerca_de">Acerca de Nosotros <span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav my-2 my-lg-0">
+          {% if request.session.customer %}
+          <li class="nav-item btn btn-light">
+            <a class="nav-link" href="/cart">Carrito
+              <span class="badge badge-primary">{{request.session.cart.keys|length}}</span>
+              <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-link btn btn-light">
+            <a class="nav-link" href="/perfil">Perfil<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-link btn btn-light">
+            <a class="nav-link" href="/orders">Orden<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-link btn btn-light">
+            <a class="nav-link" href="/logout">Cerrar sesion<span class="sr-only">(current)</span></a>
+          </li>
+          {% else %}
+
+          <li class="nav-link btn btn-light">
+            <a class="nav-link active" href="/signup">Registrarse<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-link btn btn-light">
+            <a class="nav-link active" href="/login">Iniciar sesion<span class="sr-only">(current)</span></a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+
+    {% block content %}{% endblock %}
+  </div>
+
+  <!-- footer -->
+  <footer class="bg-cover mt-5">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row gy-5">
+          <div class="col-lg-4">
+            <p>Nuestras redes sociales a tu alcance.</p>
+            <div class="mt-1 col-auto social-icons">
+              <a style="text-decoration:none;" href="https://www.facebook.com/beita.zamoranouriona"><i class='bx bxl-facebook'></i></a>
+              <a style="text-decoration:none;" href="https://twitter.com/?lang=es"><i class='bx bxl-twitter'></i></a>
+              <a style="text-decoration:none;" href="https://instagram.com/beita_zamorano_"><i class='bx bxl-instagram'></i></a>
+              <a style="text-decoration:none;" href="https://pin.it/XPj9rbz"><i class='bx bxl-pinterest'></i></a>
+            </div>
+          </div>
+          <div class="col-lg-3 ms-auto">
+            <h6 class="text-white mb-4">¡CONTACTATE!</h6>
+            <p class="mb-1">Celular : (591) 648 8842</p>
+            <p class="mb-1">oneclick@enterprice.org</p>
+          </div>
+          <div class="col-lg-3">
+            <h6 class="text-white mb-4">HORARIOS DE ATENCION AL CLIENTE</h6>
+            <p class="mb-1">Lunes-Viernes : 08:00 - 16:00</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="row gy-3 justify-content-between">
+          <div class="col-auto">
+            <p class="mb-0">Copyrights@2023 Todos los derechos reservados.</p>
+          </div>
+          <div class="col-auto">
+            <p class="mb-0">Desarrollado por <a href="{% url 'acerca_de' %}">Dream Team</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- navbar -->
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+
+  <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'js/app.js' %}"></script>
+
+</body>
+
+</html>
