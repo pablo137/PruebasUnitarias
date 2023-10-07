@@ -7,7 +7,9 @@
 
 [![Visual-Code Version](https://img.shields.io/badge/Visual-Code-blue)](https://code.visualstudio.com/)
 
-[![Python Version](https://img.shields.io/badge/Python-3.11.2-white)](https://www.python.org/downloads/release/python-3112/)
+[![Visual-Code Version](https://img.shields.io/badge/Visual-Code-blue)](https://www.python.org/downloads/release/python-3112/)
+
+
 
 ## Crear proyecto
 
