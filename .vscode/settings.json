@@ -1,7 +1,7 @@
 {
     "[python]": {
-        "editor.defaultFormatter": "ms-vsliveshare.vsliveshare"
+        "editor.defaultFormatter": "ms-python.black-formatter"
     },
     "python.formatting.provider": "none",
-    "python.analysis.typeCheckingMode": "basic"
+    "python.analysis.typeCheckingMode": "off"
 }

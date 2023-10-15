@@ -7,7 +7,6 @@ from django.views import View
 from store.models.product import Product
 from store.models.orders import Order
 
-
 class CheckOut(View):
     def post(self, request):
         address = request.POST.get('address')
@@ -18,7 +17,7 @@ class CheckOut(View):
         print(address, phone, customer, cart, products)
 
         for product in products:
-            print(cart.get(str(product.id)))
+            print(cart.get(str(product)))
             order = Order(customer=Customer(id=customer),
                           product=product,
                           price=product.price,
@@ -27,5 +26,4 @@ class CheckOut(View):
                           quantity=cart.get(str(product.id)))
             order.save()
         request.session['cart'] = {}
-
         return redirect('cart')
