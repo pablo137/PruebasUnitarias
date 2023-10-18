@@ -57,16 +57,9 @@
 
 ---
 
-## Ejecutar SonarQube
-## INSTALAR JAVA
-<span style="color:chartreuse">https://www.java.com/es/download/</span>
-<span style="color:chartreuse">https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html</span>
+## EJECUTAR PYTEST
+## EJECUTAR REPORTE GENERAL DE PRUEBAS
+<span style="color:chartreuse">pytest -v</span>
 
-## DESCARGAR SONAR
-<span style="color:chartreuse">https://www.sonarsource.com/products/sonarqube/downloads/success-download-community-edition/</span>
-
-<span style="color:chartreuse">https://docs.sonarsource.com/sonarqube/latest/analyzing-source-code/scanners/sonarscanner/</span>
-## SEGUIR ESTOS PASOS DE LAS IMAGENES ADJUNTAS
-<span style="color:chartreuse">https://res.cloudinary.com/dexh8g1vv/image/upload/v1695851134/media/MEW/GUIA_sa5dtl.png</span>
-
-
+## EJECUTAR REPORTE DE COVERAGE DE LAS PRUEBAS
+<span style="color:chartreuse">pytest --cov=store/models --cov=store/views --cov-report=term-missing --cov-report=html</span>
